@@ -5,30 +5,30 @@ import RecipesPage from '@/views/RecipesPage.vue'
 import ShoppingListPage from '@/views/ShoppingListPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
+export const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home',
     component: HomePage,
   },
   {
     path: '/recipes',
-    name: 'recipes',
+    name: 'Recipes',
     component: RecipesPage,
   },
   {
     path: '/recipes/:id',
-    name: 'recipe',
+    name: 'Recipe',
     component: RecipePage,
   },
   {
     path: '/meal-plan',
-    name: 'meal-plan',
+    name: 'Meal Plan',
     component: MealPlanPage,
   },
   {
     path: '/shopping-list',
-    name: 'shopping-list',
+    name: 'Shopping List',
     component: ShoppingListPage,
   },
 ]
