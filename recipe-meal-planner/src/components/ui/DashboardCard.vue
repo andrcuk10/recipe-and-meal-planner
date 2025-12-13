@@ -1,6 +1,8 @@
 <template>
   <!-- Card -->
-  <div class="border-slate-200 hover:shadow-lg transition-shadow group">
+  <div
+    class="p-4 rounded-lg border border-slate-200 hover:shadow-lg bg-white transition-shadow group"
+  >
     <!-- Card Header -->
     <div class="pb-4">
       <div class="flex items-center justify-between mb-2">

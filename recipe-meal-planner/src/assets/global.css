@@ -7,3 +7,7 @@
   --primary-blue: #155dfc;
   --primary-orange: #f54a00;
 }
+
+body {
+  background-color: #f5f5f5;
+}
