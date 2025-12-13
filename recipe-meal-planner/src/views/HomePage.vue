@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppHeader from '@/components/layout/AppHeader.vue'
 import ButtonItem from '@/components/ui/ButtonItem.vue'
 import CardContent from '@/components/ui/card/CardContent.vue'
 import CardDescription from '@/components/ui/card/CardDescription.vue'
@@ -10,12 +11,10 @@ import CardTitle from '@/components/ui/card/CardTitle.vue'
 <template>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- {/* Header */} -->
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold text-slate-900 mb-2">Dobrodošli!</h1>
-      <p class="text-lg text-slate-600">
-        Upravljaj svojim receptima, planiraj obroke i kreiraj liste kupovine na jednom mjestu
-      </p>
-    </div>
+    <AppHeader
+      title="Dobrodošli!"
+      description="Upravljaj svojim receptima, planiraj obroke i kreiraj liste kupovine na jednom mjestu"
+    ></AppHeader>
 
     <!-- {/* Main Cards Grid */} -->
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
