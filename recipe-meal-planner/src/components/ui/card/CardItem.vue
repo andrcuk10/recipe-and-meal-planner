@@ -1,6 +1,6 @@
 <template>
   <!-- Card -->
-  <div :class="className">
+  <div :class="className" class="rounded-lg border">
     <slot></slot>
   </div>
 </template>
