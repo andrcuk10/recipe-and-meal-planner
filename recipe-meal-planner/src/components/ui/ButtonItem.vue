@@ -1,6 +1,6 @@
 <template>
   <button
-    class="w-full p-2 rounded-lg border cursor-pointer font-medium text-md"
+    class="w-full p-2 rounded-lg border cursor-pointer font-medium text-sm"
     :class="className"
   >
     <slot></slot>
