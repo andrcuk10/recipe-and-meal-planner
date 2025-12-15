@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/forms";
 
 :root {
   --text-primary-color: #0f172b;

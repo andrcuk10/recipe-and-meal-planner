@@ -33,7 +33,7 @@ import CardTitle from '@/components/ui/card/CardTitle.vue'
                 Pregledaj
               </ButtonItem>
             </RouterLink>
-            <RouterLink :to="{ name: 'Recipes' }" class="flex-1">
+            <RouterLink :to="{ name: 'New Recipe' }" class="flex-1">
               <ButtonItem class-name="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
                 >Novi</ButtonItem
               >

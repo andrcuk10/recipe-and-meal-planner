@@ -1,5 +1,6 @@
 import HomePage from '@/views/HomePage.vue'
 import MealPlanPage from '@/views/MealPlanPage.vue'
+import NewRecipePage from '@/views/NewRecipePage.vue'
 import RecipePage from '@/views/RecipePage.vue'
 import RecipesPage from '@/views/RecipesPage.vue'
 import ShoppingListPage from '@/views/ShoppingListPage.vue'
@@ -20,6 +21,11 @@ export const routes = [
     path: '/recipes/:id',
     name: 'Recipe',
     component: RecipePage,
+  },
+  {
+    path: '/recipes/new',
+    name: 'New Recipe',
+    component: NewRecipePage,
   },
   {
     path: '/meal-plan',

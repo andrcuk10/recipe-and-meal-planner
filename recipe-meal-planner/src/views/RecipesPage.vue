@@ -36,7 +36,7 @@ const mockRecipes = ref<Recipe[]>([
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- {/* Header */} -->
     <AppHeader title="Recepti" description="Upravljaj svojom bazom receptata">
-      <RouterLink :to="{ name: 'Recipes' }">
+      <RouterLink :to="{ name: 'New Recipe' }">
         <ButtonItem class-name="px-3 bg-emerald-600 hover:bg-emerald-700 text-white"
           >Novi recept</ButtonItem
         >
