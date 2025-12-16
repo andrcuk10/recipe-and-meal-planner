@@ -3,12 +3,15 @@ import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import { createRecipeSchema } from '@/schemas/recipeSchema'
 import ButtonItem from '../ButtonItem.vue'
+import InputField from '../inputs/InputField.vue'
+import SelectField from '../inputs/SelectField.vue'
+import TextareaField from '../inputs/TextareaField.vue'
 
 const { errors, handleSubmit, defineField } = useForm({
   validationSchema: toTypedSchema(createRecipeSchema),
 })
 
-const [name, nameAttrs] = defineField('name')
+const [name, nameAttrs] = defineField('name', { props: (state) => ({ error: state.errors[0] }) })
 const [servings, servingsAttrs] = defineField('servings')
 const [prepTime, prepTimeAttrs] = defineField('prepTime')
 const [cookTime, cookTimeAttrs] = defineField('cookTime')
@@ -23,71 +26,34 @@ const onSubmit = handleSubmit((values, { resetForm }) => {
 
 <template>
   <form @submit="onSubmit" class="mt-4 flex flex-col gap-4">
-    <label class="block">
-      <span class="text-gray-700 font-semibold">Naziv recepta</span>
-      <input
-        type="text"
-        v-model="name"
-        v-bind="nameAttrs"
-        class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      />
-      <div class="text-sm text-red-600">{{ errors.name }}</div>
-    </label>
+    <InputField type="text" v-model="name" v-bind="nameAttrs">Naziv recepta</InputField>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <label class="block">
-        <span class="text-gray-700 font-semibold">Porcije</span>
-        <input
-          type="number"
-          v-model="servings"
-          v-bind="servingsAttrs"
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-        <div class="text-sm text-red-600">{{ errors.servings }}</div>
-      </label>
+      <InputField type="number" v-model="servings" :error="errors.servings" v-bind="servingsAttrs"
+        >Porcije</InputField
+      >
 
-      <label class="block">
-        <span class="text-gray-700 font-semibold">Priprema(min)</span>
-        <input
-          type="number"
-          v-model="prepTime"
-          v-bind="prepTimeAttrs"
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
+      <InputField type="number" v-model="prepTime" v-bind="prepTimeAttrs" :error="errors.prepTime"
+        >Priprema(min)</InputField
+      >
 
-      <label class="block">
-        <span class="text-gray-700 font-semibold">Kuvanje(min)</span>
-        <input
-          type="number"
-          v-model="cookTime"
-          v-bind="cookTimeAttrs"
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        />
-      </label>
+      <InputField type="number" v-model="cookTime" v-bind="cookTimeAttrs" :error="errors.cookTime"
+        >Kuvanje(min)</InputField
+      >
 
-      <label class="block">
-        <span class="text-gray-700 font-semibold">Težina</span>
-        <select
-          v-model="difficulty"
-          v-bind="difficultyAttrs"
-          class="form-select mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        >
+      <SelectField v-model="difficulty" v-bind="difficultyAttrs" :error="errors.difficulty">
+        <template #default>Težina</template>
+        <template #options>
           <option value="easy">Lako</option>
           <option value="mid">Srednje</option>
           <option value="hard">Tesko</option>
-        </select>
-      </label>
+        </template>
+      </SelectField>
     </div>
 
-    <label class="block">
-      <span class="text-gray-700 font-semibold">Opis recepta</span>
-      <textarea
-        v-model="description"
-        v-bind="descriptionAttrs"
-        class="form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      ></textarea>
-    </label>
+    <TextareaField v-model="description" v-bind="descriptionAttrs" :error="errors.description"
+      >Opis recepta</TextareaField
+    >
 
     <div class="flex gap-2">
       <RouterLink :to="{ name: 'Recipes' }" class="flex-1">
